@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Design_Pattern_Strategy
 {
@@ -178,6 +175,47 @@ namespace Design_Pattern_Strategy
         {
             //make a new t-shirt using all characteristics you like
             TShirt t1 = new TShirt(Color.RED, Size.M, Fabric.COTTON);
+            TShirt t2 = new TShirt(Color.VIOLE, Size.L, Fabric.CASHMERE);
+            TShirt t3 = new TShirt(Color.BLUE, Size.S, Fabric.LINEN);
+            TShirt t4 = new TShirt(Color.INDIGO, Size.M, Fabric.COTTON);
+            TShirt t5 = new TShirt(Color.YELLOW, Size.XXXL, Fabric.POLYESTER);
+            TShirt t6 = new TShirt(Color.GREEN, Size.XXL, Fabric.RAYON);
+            TShirt t7 = new TShirt(Color.INDIGO, Size.M, Fabric.LINEN);
+            TShirt t8 = new TShirt(Color.RED, Size.XS, Fabric.SILK);
+            TShirt t9 = new TShirt(Color.RED, Size.M, Fabric.WOOL);
+            TShirt t10 = new TShirt(Color.BLUE, Size.XS, Fabric.CASHMERE);
+            TShirt t11 = new TShirt(Color.GREEN, Size.L, Fabric.COTTON);
+            TShirt t12 = new TShirt(Color.RED, Size.M, Fabric.POLYESTER);
+            TShirt t13 = new TShirt(Color.VIOLE, Size.L, Fabric.RAYON);
+            TShirt t14 = new TShirt(Color.RED, Size.M, Fabric.COTTON);
+            TShirt t15 = new TShirt(Color.INDIGO, Size.XXXL, Fabric.COTTON);
+            TShirt t16 = new TShirt(Color.ORANGE, Size.XXL, Fabric.CASHMERE);
+            TShirt t17 = new TShirt(Color.ORANGE, Size.XL, Fabric.COTTON);
+            TShirt t18 = new TShirt(Color.BLUE, Size.M, Fabric.LINEN);
+            TShirt t19 = new TShirt(Color.VIOLE, Size.M, Fabric.SILK);
+            TShirt t20 = new TShirt(Color.ORANGE, Size.L, Fabric.WOOL);
+            TShirt t21 = new TShirt(Color.RED, Size.S, Fabric.CASHMERE);
+            TShirt t22 = new TShirt(Color.GREEN, Size.S, Fabric.COTTON);
+            TShirt t23 = new TShirt(Color.RED, Size.M, Fabric.LINEN);
+            TShirt t24 = new TShirt(Color.BLUE, Size.XL, Fabric.RAYON);
+            TShirt t25 = new TShirt(Color.RED, Size.XS, Fabric.COTTON);
+            TShirt t26 = new TShirt(Color.RED, Size.XXL, Fabric.WOOL);
+            TShirt t27 = new TShirt(Color.GREEN, Size.L, Fabric.COTTON);
+            TShirt t28 = new TShirt(Color.ORANGE,Size.M, Fabric.LINEN);
+            TShirt t29 = new TShirt(Color.RED, Size.M, Fabric.SILK);
+            TShirt t30 = new TShirt(Color.RED, Size.L, Fabric.RAYON);
+            TShirt t31 = new TShirt(Color.YELLOW, Size.S, Fabric.COTTON);
+            TShirt t32 = new TShirt(Color.RED, Size.XXL, Fabric.COTTON);
+            TShirt t33 = new TShirt(Color.VIOLE, Size.M, Fabric.CASHMERE);
+            TShirt t34 = new TShirt(Color.RED, Size.XL, Fabric.COTTON);
+            TShirt t35 = new TShirt(Color.YELLOW, Size.M, Fabric.CASHMERE);
+            TShirt t36 = new TShirt(Color.INDIGO, Size.XS, Fabric.COTTON);
+            TShirt t37 = new TShirt(Color.RED, Size.XXL, Fabric.COTTON);
+            TShirt t38 = new TShirt(Color.RED, Size.XXL, Fabric.CASHMERE);
+            TShirt t39 = new TShirt(Color.ORANGE, Size.M, Fabric.COTTON);
+            TShirt t40 = new TShirt(Color.GREEN, Size.XS, Fabric.LINEN);
+
+
 
             //make Variation list
             IEnumerable<Variation> varietionList = new List<Variation>() { new ColorVariation(), new SizeVariation(), new FabricVariation() };
@@ -188,6 +226,35 @@ namespace Design_Pattern_Strategy
 
             //the new eshop e1 has a method that is show the cost of this t-shirt (Pay this t-shirt)
             e1.GetTshirtCost(t1);
+            e1.GetTshirtCost(t2);
+            e1.GetTshirtCost(t3);
+            e1.GetTshirtCost(t4);
+            e1.GetTshirtCost(t5);
+
+
+
+
+            TShirt[] tshirtsArray = { t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16,t17,t18,t19,t20,
+                t21,t22,t23,t24,t25,t26,t27,t28,t29,t30,t31,t32,t33,t34,t35,t36,t37,t38,t39,t40 };
+
+            TShirt temp;
+            for (int j = 0; j <= tshirtsArray.Length - 2; j++)
+            {
+                for (int i = 0; i <= tshirtsArray.Length - 2; i++)
+                {
+                    if (tshirtsArray[i].Price > tshirtsArray[i + 1].Price)
+                    {
+                        temp = tshirtsArray[i + 1];
+                        tshirtsArray[i + 1] = tshirtsArray[i];
+                        tshirtsArray[i] = temp;
+                    }
+                }
+            }
+            Console.WriteLine("\n" + "Sorted array :");
+            foreach (TShirt t in tshirtsArray)
+                Console.Write(t.Price + " ");
+
+            Console.Write("\n");
 
             //choose the payment method you like
             e1.SelectPaymentMethod(new BankTransferMethod());
@@ -199,9 +266,10 @@ namespace Design_Pattern_Strategy
     {
         static void Main(string[] args)
         {
-
             ChooseMenu menu1 = new ChooseMenu();
             menu1.Start();
+
+            Console.ReadKey();
         }
     }
 }
